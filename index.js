@@ -117,3 +117,9 @@ export const downloadApk = async ({
     }
 }
 
+/**
+ * 检查apk文件是否已下载
+ */
+ const checkApkFileExist = async () => {
+    return await RNFetchBlob.fs.exists(downloadApkFilePath);
+}
