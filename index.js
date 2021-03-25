@@ -111,15 +111,7 @@ export const downloadApk = async ({
         .catch((errorMessage, statusCode) => {
           callback?.onFailure(errorMessage, statusCode);
         });
-    if (downloadInstall) {
-        const apkFileExist = await checkApkFileExist();
-        apkFileExist && RNUpgrade.installApk(apkFilePath);
+    if (downloadInstall) {        
+        RNUpgrade.installApk(apkFilePath);
     }
-}
-
-/**
- * 检查apk文件是否已下载
- */
- const checkApkFileExist = async () => {
-    return await RNFetchBlob.fs.exists(downloadApkFilePath);
 }
